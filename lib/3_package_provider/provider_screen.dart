@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../common/count_use_case.dart';
 import '../common/counter_service.dart';
-import 'my_provider.dart';
+import 'main_provider.dart';
 
 
 class ProviderScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class ProviderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => MyProvider(
+        ChangeNotifierProvider(create: (_) => MainProvider(
             counterUseCase: CountUseCase(
               repository: CounterService()
             )
@@ -50,7 +50,7 @@ class _FloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<MyProvider>(context, listen: false);
+    final provider = Provider.of<MainProvider>(context, listen: false);
 
     return FloatingActionButton(
       onPressed: () async => await provider.increment(),
@@ -65,7 +65,7 @@ class _BlocPatternBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<MyProvider>(context, listen: true);
+    final provider = Provider.of<MainProvider>(context, listen: true);
 
     return Center(
       child: Column(

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../common/count_use_case.dart';
 
-class MyProvider extends ChangeNotifier {
+class MainProvider extends ChangeNotifier {
 
   final CountUseCase counterUseCase;
 
-  MyProvider({ required this.counterUseCase});
+  MainProvider({ required this.counterUseCase});
 
   int counter = 0;
 
