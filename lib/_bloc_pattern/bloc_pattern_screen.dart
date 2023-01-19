@@ -20,7 +20,7 @@ class BlocPatternScreen extends StatelessWidget {
       ),
       body: _BlocPatternBody(bloc: bloc),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async => await bloc.increment(bloc.counter),
+        onPressed: () async => await bloc.increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

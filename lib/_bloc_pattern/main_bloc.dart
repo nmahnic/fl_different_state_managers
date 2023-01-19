@@ -11,8 +11,8 @@ class MainBloc extends ChangeNotifier {
 
   int counter = 0;
 
-  Future<void> increment(value) async {
-    counter = await counterUseCase.increment(value);
+  Future<void> increment() async {
+    counter = await counterUseCase.increment(counter);
     notifyListeners();
   }
 

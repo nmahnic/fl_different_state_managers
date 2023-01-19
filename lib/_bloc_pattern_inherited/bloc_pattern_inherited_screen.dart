@@ -22,17 +22,29 @@ class _BlocPatternInheritedScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = _CounterInherited.of(context).bloc;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bloc Pattern"),
+        title: const Text("Bloc Pattern with InheritedWidget"),
       ),
       body: const _BlocPatternBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async => await bloc.increment(bloc.counter),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: const _FloatingActionButton(), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class _FloatingActionButton extends StatelessWidget {
+  const _FloatingActionButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = _CounterInherited.of(context).bloc;
+
+    return FloatingActionButton(
+      onPressed: () async => await bloc.increment(),
+      tooltip: 'Increment',
+      child: const Icon(Icons.add),
     );
   }
 }
@@ -45,6 +57,7 @@ class _BlocPatternBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = _CounterInherited.of(context).bloc;
+    
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
