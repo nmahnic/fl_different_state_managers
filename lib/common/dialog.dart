@@ -15,7 +15,7 @@ void customDialog(BuildContext context){
             ],
           ),
         ),
-        actions: <Widget>[
+        actions: [
           TextButton(
             child: const Text('Approve'),
             onPressed: () {
