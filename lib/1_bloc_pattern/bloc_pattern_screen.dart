@@ -1,4 +1,4 @@
-import 'package:fl_provider_or_bloc/_bloc_pattern/main_bloc.dart';
+import 'package:fl_provider_or_bloc/1_bloc_pattern/main_bloc.dart';
 import 'package:fl_provider_or_bloc/common/count_use_case.dart';
 import 'package:fl_provider_or_bloc/common/counter_service.dart';
 import 'package:flutter/material.dart';

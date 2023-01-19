@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '_bloc_pattern/bloc_pattern_screen.dart';
-import '_bloc_pattern_inherited/bloc_pattern_inherited_screen.dart';
-import '_package_flutter_bloc/bloc_screen.dart';
-import '_none/none_screen.dart';
-import '_package_provider/provider_screen.dart';
+import '1_bloc_pattern/bloc_pattern_screen.dart';
+import '2_bloc_pattern_inherited/bloc_pattern_inherited_screen.dart';
+import '4_package_flutter_bloc/bloc_screen.dart';
+import '0_none/none_screen.dart';
+import '3_package_provider/provider_screen.dart';
 
 void main() {
   runApp(const MyApp());

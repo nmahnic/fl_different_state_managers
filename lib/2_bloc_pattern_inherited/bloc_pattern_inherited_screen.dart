@@ -16,9 +16,7 @@ class BlocPatternInheritedScreen extends StatelessWidget {
 }
 
 class _BlocPatternInheritedScreenContent extends StatelessWidget {
-  const _BlocPatternInheritedScreenContent({
-    Key? key,
-  }) : super(key: key);
+  const _BlocPatternInheritedScreenContent({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
