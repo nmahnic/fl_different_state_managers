@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 
 import '../common/count_use_case.dart';
+import '../common/counter_service.dart';
 
 class MainProvider extends ChangeNotifier {
 
-  final CountUseCase counterUseCase;
-
-  MainProvider({ required this.counterUseCase});
+  final counterUseCase = CountUseCase(
+    repository: CounterService()
+  );
 
   int counter = 0;
 
