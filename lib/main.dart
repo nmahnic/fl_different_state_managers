@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         'home':                   ( _ ) => const HomeScreen(),
         'none':                   ( _ ) => const NoneScreen(),
         'bloc_pattern':           ( _ ) => BlocPatternScreen(),
-        'bloc_pattern_inherited': ( _ ) => BlocPatternInheritedScreen(),
+        'bloc_pattern_inherited': ( _ ) => const BlocPatternInheritedScreen(),
         'bloc':                   ( _ ) => const BlocScreen(),
         'provider':               ( _ ) => const ProviderScreen()
       },

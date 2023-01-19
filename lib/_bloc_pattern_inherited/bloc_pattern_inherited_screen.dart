@@ -4,24 +4,30 @@ import 'package:fl_provider_or_bloc/common/counter_service.dart';
 import 'package:flutter/material.dart';
 
 class BlocPatternInheritedScreen extends StatelessWidget {
-  BlocPatternInheritedScreen({Key? key,}) : super(key: key);
+  const BlocPatternInheritedScreen({Key? key,}) : super(key: key);
 
-  final MainBlocInherited bloc = MainBlocInherited(
-    counterUseCase: CountUseCase(
-      repository: CounterService()
-    )
-  );
+  
+  @override
+  Widget build(BuildContext context) {
+    return _CounterInherited(
+      child: const _BlocPatternInheritedScreenContent()
+    );
+  }
+}
+
+class _BlocPatternInheritedScreenContent extends StatelessWidget {
+  const _BlocPatternInheritedScreenContent({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final bloc = _CounterInherited.of(context).bloc;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Bloc Pattern"),
       ),
-      body: _CounterInherited(
-        bloc: bloc,
-        child: const _BlocPatternBody()
-      ),
+      body: const _BlocPatternBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async => await bloc.increment(bloc.counter),
         tooltip: 'Increment',
@@ -38,7 +44,7 @@ class _BlocPatternBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = _CounterInherited.of(context);
+    final bloc = _CounterInherited.of(context).bloc;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -61,15 +67,18 @@ class _BlocPatternBody extends StatelessWidget {
 
 class _CounterInherited extends InheritedWidget {
 
-  const _CounterInherited({
+  _CounterInherited({
     required Widget child, 
-    required this.bloc
   }) : super(child: child);
 
-  final MainBlocInherited bloc;
+  final MainBlocInherited bloc = MainBlocInherited(
+    counterUseCase: CountUseCase(
+      repository: CounterService()
+    )
+  );
 
-  static MainBlocInherited of(BuildContext context) => context
-    .findAncestorWidgetOfExactType<_CounterInherited>()!.bloc;
+  static _CounterInherited of(BuildContext context) => context
+    .findAncestorWidgetOfExactType<_CounterInherited>()!;
   
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
