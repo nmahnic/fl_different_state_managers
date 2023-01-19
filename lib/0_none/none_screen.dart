@@ -1,6 +1,8 @@
 import 'package:fl_provider_or_bloc/common/counter_service.dart';
 import 'package:flutter/material.dart';
 
+import '../common/dialog.dart';
+
 class NoneScreen extends StatefulWidget {
   const NoneScreen({super.key});
 
@@ -14,6 +16,11 @@ class _NoneScreenState extends State<NoneScreen> {
 
   void _incrementCounter() async {
     _counter = await service.proccess(_counter);
+  
+    if( (_counter > 0) && ((_counter % 5) == 0) ){
+      customDialog(context);
+    }
+
     setState(() {});
   }
 

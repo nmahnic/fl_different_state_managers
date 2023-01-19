@@ -1,3 +1,4 @@
+import 'package:fl_provider_or_bloc/common/dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +40,12 @@ class _FloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<MainProvider>(context, listen: false);
+
+    provider.addListener(() {
+      if( (provider.counter > 0) && ((provider.counter % 5) == 0) ){
+        customDialog(context);
+      }
+    });
 
     return FloatingActionButton(
       onPressed: () async => await provider.increment(),

@@ -1,3 +1,4 @@
+import '../common/dialog.dart';
 import './main_bloc_inherited.dart';
 import 'package:fl_provider_or_bloc/common/count_use_case.dart';
 import 'package:fl_provider_or_bloc/common/counter_service.dart';
@@ -38,6 +39,12 @@ class _FloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = _CounterInherited.of(context).bloc;
+
+    bloc.addListener(() {
+      if( (bloc.counter > 0) && ((bloc.counter % 5) == 0) ){
+        customDialog(context);
+      }
+    });
 
     return FloatingActionButton(
       onPressed: () async => await bloc.increment(),

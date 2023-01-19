@@ -3,6 +3,8 @@ import 'package:fl_provider_or_bloc/common/count_use_case.dart';
 import 'package:fl_provider_or_bloc/common/counter_service.dart';
 import 'package:flutter/material.dart';
 
+import '../common/dialog.dart';
+
 class BlocPatternScreen extends StatelessWidget {
   BlocPatternScreen({Key? key,}) : super(key: key);
 
@@ -14,6 +16,13 @@ class BlocPatternScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    bloc.addListener(() {
+      if( (bloc.counter > 0) && ((bloc.counter % 5) == 0) ){
+        customDialog(context);
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Bloc Pattern"),
